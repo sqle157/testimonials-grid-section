@@ -1,0 +1,171 @@
+:root {
+	--violet: hsl(263, 55%, 52%);
+	--grayish-blue: hsl(217, 19%, 35%);
+	--blackish-blue: hsl(219, 29%, 14%);
+	--white: hsl(0, 0%, 100%);
+	--neutral-gray: hsl(0, 0%, 81%);
+	--neutral-gray-blue: hsl(210, 46%, 95%);
+
+	/* Font Property */
+	--ff: "Barlow Semi Condensed", sans-serif;
+
+	/* Font-weight */
+	--fw-500: 500;
+	--fw-600: 600;
+
+	/* Font-size */
+	--fs-small: 0.6875rem;
+	--fs-normal: 0.8125rem;
+	--fs-large: 1.25rem;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	display: grid;
+	place-content: center;
+	min-height: 100vh;
+	font-family: var(--ff);
+	font-weight: var(--fw-500);
+	background-color: var(--neutral-gray-blue);
+}
+
+h2 {
+	font-size: var(--fs-normal);
+	font-weight: var(--fw-500);
+	line-height: 1;
+}
+
+/* Utilities Classes */
+/* Take after Kevin Powell's Css */
+.flex-container {
+	display: flex;
+	gap: 1rem;
+}
+
+.mt-1 > *:where(:not(:first-child)) {
+	margin-top: 1rem;
+}
+
+.bg-violet {
+	background: var(--violet);
+}
+
+.bg-gray-blue {
+	background: var(--grayish-blue);
+}
+
+.bg-dark-blue {
+	background: var(--blackish-blue);
+}
+
+.bg-white {
+	background: var(--white);
+}
+
+.text-white {
+	color: var(--white);
+}
+
+.text-gray {
+	color: var(--grayish-blue);
+}
+
+.image-border {
+	border: 2px solid #a775f1;
+}
+
+/* Components CSS */
+.grid-container {
+	display: grid;
+	gap: 1.5rem;
+	grid-auto-columns: 1fr;
+	grid-template-areas:
+		"one"
+		"two"
+		"three"
+		"four"
+		"five";
+
+	width: min(95%, 70rem); /* 70rem is the max width of the grid */
+	padding-block: 2rem; /* padding-top and padding-bottom */
+	margin-inline: auto; /* margin-left and margin-right */
+}
+
+.testomonial {
+	font-size: var(--fs-normal);
+	padding: 2rem;
+	border-radius: 0.5rem;
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(217, 19%, 35%, 0.25);
+}
+
+.testomonial img {
+	max-width: 1.75rem;
+	border-radius: 50%;
+}
+
+.testomonial .position {
+	font-size: var(--fs-small);
+	opacity: 0.5;
+}
+
+.testomonial .heading {
+	font-size: var(--fs-large);
+	line-height: 1.2;
+}
+
+.testomonial .content {
+	opacity: 0.7;
+}
+
+.testomonial.bg-quote {
+	background-image: url("./images/bg-pattern-quotation.svg");
+	background-repeat: no-repeat;
+	background-position: top right 10%;
+}
+
+/* Grid Areas */
+.testomonial:nth-child(1) {
+	grid-area: one;
+}
+
+.testomonial:nth-child(2) {
+	grid-area: two;
+}
+
+.testomonial:nth-child(3) {
+	grid-area: three;
+}
+
+.testomonial:nth-child(4) {
+	grid-area: four;
+}
+
+.testomonial:nth-child(5) {
+	grid-area: five;
+}
+
+/* Media Query */
+/* Tablet */
+@media only screen and (min-width: 768px) {
+	.grid-container {
+		grid-template-areas:
+			"one one"
+			"two five"
+			"three five"
+			"four four";
+	}
+}
+
+/* Desktop */
+@media only screen and (min-width: 1200px) {
+	.grid-container {
+		grid-template-areas:
+			"one one two five"
+			"three four four five";
+	}
+}
